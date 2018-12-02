@@ -1,0 +1,81 @@
+= Learning Kotlin
+
+This project has the following samples
+
+* Basic Kotlin
+* Arrow library
+
+.Gradle dependency -> build.gradle
+[source,groovy]
+----
+buildscript {
+    ext.kotlin_version = '1.2.61'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+def arrow_version = "0.7.3"
+
+apply plugin: 'kotlin'
+apply plugin: 'application'
+
+mainClassName = 'com.kish.learning.LogicCondition'
+
+defaultTasks 'run'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main.kotlin.srcDirs += 'src/main/kotlin'
+    main.java.srcDirs += 'src/main/java'
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testCompile 'junit:junit:4.11'
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    compile "io.arrow-kt:arrow-core:$arrow_version"
+    compile "io.arrow-kt:arrow-syntax:$arrow_version"
+    compile "io.arrow-kt:arrow-typeclasses:$arrow_version"
+    compile "io.arrow-kt:arrow-data:$arrow_version"
+    compile "io.arrow-kt:arrow-instances-core:$arrow_version"
+    compile "io.arrow-kt:arrow-instances-data:$arrow_version"
+    kapt    "io.arrow-kt:arrow-annotations-processor:$arrow_version"
+}
+----
+
+== Customer.kt
+This is a sample Class for understanding how class are created in Kotlin
+
+== LearnForLoop.kt
+This class is to learn the for loops available
+
+[source,java]
+----
+for (index in 1..10) { print(" $index  ,") }
+//1 ... 9
+for (index in 1 until 10) { print(" $index  ,") }
+//reverse the range
+for (index in 10 downTo  1) { print(" $index  ,") }
+----
+
+== LogicCondition.kt
+A sample class that tries to learn conditions like
+
+* if
+* when
+* for
+* while
+
+== Puzzlers.kt
+A class where higher order functions are tested , along with understandings of monad and monoid concepts in Arrow library.
+
+
+
+
